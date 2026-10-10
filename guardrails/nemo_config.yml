@@ -1,0 +1,38 @@
+# NeMo Guardrails Configuration for Supply Chain Agent Network
+models:
+  - type: main
+    engine: openai
+    model: gpt-4o
+
+rails:
+  input:
+    flows:
+      - check compliance and sanctions
+      - check spend boundaries
+
+  output:
+    flows:
+      - verify operational feasibility
+      - verify single source constraints
+
+prompts:
+  - task: self_check_spend
+    content: |
+      Instructions:
+      Verify that the proposed contract value does not exceed $50,000 USD without human approval.
+      If the price premium exceeds 15%, mark escalation_required: true.
+
+colang:
+  version: "2.0"
+  content: |
+    define flow check compliance and sanctions
+      user asked about supplier renegotiation
+      if $supplier_country in ["RU", "KP", "IR", "SY"]
+        bot refuse "Supplier located in sanctioned jurisdiction."
+        stop
+
+    define flow check spend boundaries
+      user proposed contract modification
+      if $contract_value > 50000
+        bot trigger hitl_escalation
+        stop

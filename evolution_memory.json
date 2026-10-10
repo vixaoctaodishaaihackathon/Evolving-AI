@@ -1,0 +1,25 @@
+{
+  "generation": 10,
+  "total_cycles_completed": 9,
+  "cumulative_savings_usd": 497000.0,
+  "average_risk_mitigated_pct": 0.0,
+  "heuristic_weights": {
+    "supplier_reliability_weight": 0.45,
+    "cost_minimization_weight": 0.26,
+    "transit_speed_weight": 0.38,
+    "adaptive_risk_threshold": 66.5
+  },
+  "lessons_learned": [
+    "Prioritize multimodal redundancy for Asia-Europe shipments transiting maritime chokepoints.",
+    "Ensure secondary Tier-2 suppliers are verified for single-source semiconductor microcontrollers.",
+    "Gen 2: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 3: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 4: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 5: Resolved Chokepoint / Market Shift via Switch procurement to LoneStar Power Components. Saved 12 days, Risk reduced by 20.0%.",
+    "Gen 6: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 7: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 8: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 9: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%.",
+    "Gen 10: Resolved Chokepoint / Market Shift via Switch procurement to Saigon Advanced Assembly. Saved 12 days, Risk reduced by 45.0%."
+  ]
+}

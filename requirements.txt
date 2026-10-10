@@ -1,0 +1,39 @@
+# Core Dependencies
+langgraph>=0.2.0
+langchain>=0.3.0
+langchain-core>=0.3.0
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+# Streaming & Event Bus
+kafka-python>=2.0.2
+redis>=5.0.0
+
+# Storage & Databases (Local)
+clickhouse-connect>=0.7.0
+neo4j>=5.17.0
+
+# Storage & Databases (Cloud - Render/Railway)
+psycopg>=3.1.0
+psycopg[binary]>=3.1.0
+
+# Data Processing
+pandas>=2.1.0
+numpy>=1.24.0
+
+# Observability
+httpx>=0.25.0
+opentelemetry-api>=1.21.0
+opentelemetry-sdk>=1.21.0
+
+# Web Server
+fastapi>=0.104.0
+uvicorn>=0.24.0
+websockets>=12.0
+
+# Optional: Streamlit Dashboard
+streamlit>=1.28.0
+plotly>=5.18.0
+
+# Optional: Temporal.io (if adding durable execution workflows)
+temporalio>=1.5.0

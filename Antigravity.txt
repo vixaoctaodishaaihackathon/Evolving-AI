@@ -1,0 +1,10 @@
+Topic:
+How can Organizations construct self evolving Ai agents network to automatically manage complex , real time global supply chains and predict market shift.
+Orchestration:
+LangGraph or Temporal.io critical for durable execution and human in the loop fallback on high risk supplier contracts.
+Streaming and Storage:
+Apache Kafka/Redpanda for live event ingestions; Clickhouse for time series analytics; Neo4j or Memgraph for the tier-N supplier knowledge graph.
+Observability And Guardrails:
+Arize Phoenix or Langfuse for tracing ; Nemo Guardrails to constrain agent spend and operational limits.
+Role:
+Spin up the core agent architecture (LangGraph/Temporal Work Flows) configure Docker Containers for Kafka/ClickHouse and write the ingestion pipeline scripts.

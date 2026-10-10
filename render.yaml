@@ -1,0 +1,70 @@
+services:
+  # Main FastAPI Web Service
+  - type: web
+    name: supply-chain-ai
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn web.server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: PYTHON_VERSION
+        value: 3.11
+      # Database Configuration (PostgreSQL with TimescaleDB)
+      - key: DATABASE_URL
+        fromDatabase:
+          name: supply-chain-db
+          property: connectionString
+      # Redis for Event Streaming (replacing Kafka)
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: supply-chain-redis
+          property: connectionString
+      # Observability
+      - key: PHOENIX_COLLECTOR_ENDPOINT
+        value: https://your-phoenix-instance.com/v1/traces
+      # Guardrails
+      - key: MAX_AUTONOMOUS_CONTRACT_USD
+        value: 50000.0
+      - key: MAX_PERMITTED_PRICE_PREMIUM_PCT
+        value: 15.0
+      - key: RISK_HITL_THRESHOLD
+        value: 65.0
+      - key: SANCTIONED_COUNTRIES
+        value: RU,KP,IR,SY
+
+  # PostgreSQL Database with TimescaleDB for time-series
+  - type: pserv
+    name: supply-chain-db
+    plan: starter
+    database: postgresql
+    postgresqlVersion: 15
+    # TimescaleDB extension will be added via migration
+    ipAllowList: []
+
+  # Redis for event streaming (replacing Kafka)
+  - type: redis
+    name: supply-chain-redis
+    plan: starter
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: []
+
+  # Background worker for agent execution
+  - type: worker
+    name: supply-chain-worker
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m agents.background_worker
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: supply-chain-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: supply-chain-redis
+          property: connectionString
